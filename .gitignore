@@ -1,0 +1,37 @@
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache and test files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE and editor settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Local SQLite databases
+jobs.db
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploaded resumes and private data
+uploads/
+data/
+
+# Local backup of the application
+/appp.py
