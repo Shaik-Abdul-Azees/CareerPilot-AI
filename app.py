@@ -567,6 +567,71 @@ if uploaded_file is not None:
                             key="resume_text_preview",
                         )
 
+                        
+                    # ATS COMPATIBILITY DISPLAY
+                    st.divider()
+                    st.subheader("📊 ATS Resume Compatibility")
+
+                    ats_score = ats_result["ats_score"]
+
+                    score_col, info_col = st.columns([1, 2])
+
+                    with score_col:
+                        st.metric(
+                            "ATS Compatibility Score",
+                            f"{ats_score}/100"
+                        )
+                        st.progress(ats_score / 100)
+
+                    with info_col:
+                        st.write(f"**Word count:** {ats_result['word_count']}")
+                        st.caption(ats_result["score_type"])
+
+                        if ats_score >= 80:
+                            st.success("Strong basic resume structure")
+                        elif ats_score >= 60:
+                            st.warning("Some resume improvements are needed")
+                        else:
+                            st.error("Your resume needs improvement")
+
+                    st.markdown("### 📋 ATS Checklist")
+
+                    check_labels = {
+                        "email": "Email address",
+                        "phone": "Phone number",
+                        "education_section": "Education section",
+                        "experience_section": "Experience section",
+                        "skills_section": "Skills section",
+                        "projects_section": "Projects section",
+                        "text_length": "Resume text length",
+                        "readable_text": "Readable extracted text",
+                    }
+
+                    for key, label in check_labels.items():
+                        check = ats_result["checks"][key]
+
+                        if check["passed"]:
+                            st.success(
+                                f"✓ {label} — "
+                                f"{check['points']}/{check['max_points']}"
+                            )
+                        else:
+                            st.warning(
+                                f"✗ {label} — "
+                                f"{check['points']}/{check['max_points']}"
+                            )
+
+                    st.markdown("### 💡 Improvement Suggestions")
+
+                    if ats_result["recommendations"]:
+                        for recommendation in ats_result["recommendations"]:
+                            st.write(f"• {recommendation}")
+                    else:
+                        st.success("No improvements suggested by these checks.")
+
+                    st.divider()
+
+
                     total_skills = sum(
                         len(skills)
                         for skills in results["skills"].values()
