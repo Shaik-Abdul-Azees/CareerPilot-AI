@@ -1,5 +1,12 @@
 # CareerPilot AI — AI-Powered Job Application Assistant
 
+🌐 **Live Demo:** [Launch CareerPilot AI](https://careerpilot-ai-cqtaoaw9vdazgkpqtt73ds.streamlit.app/)
+
+💻 **GitHub Repository:** [CareerPilot-AI](https://github.com/Shaik-Abdul-Azees/CareerPilot-AI)
+
+---
+
+
 CareerPilot AI is a Python-based application that helps job seekers analyze resumes, estimate ATS compatibility, compare their skills against job descriptions, receive AI-generated career recommendations, and track job applications.
 
 ## Features
